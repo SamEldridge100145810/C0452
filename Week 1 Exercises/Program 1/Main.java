@@ -4,5 +4,6 @@ class Main
     {
         System.out.println("Hello World 3");
         System.out.println("Hey whats up guys, Quandale Dingle here.");
+        System.out.println("THE ONE PIECE... THE ONE PIECE IS REAL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     }
 }
