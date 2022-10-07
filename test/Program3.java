@@ -1,5 +1,5 @@
 import java.util.Scanner;
-//This shit does not work whilst under the Week 1 exercises. Programs are seperated into different folders so it shouldn't even be picking up other files and thinking
+//This does not work whilst under the Week 1 exercises. Programs are seperated into different folders so it shouldn't even be picking up other files and thinking
 //That this has some large higher purpose in life. It doesn't. It just does math. That's it. Why doesn't it work there. Too bad!
 public class Program3
 
