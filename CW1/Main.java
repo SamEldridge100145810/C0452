@@ -1,6 +1,4 @@
 package CW1;
-import ;
-
 class Main {
     public static void main(String[] args) 
     {
@@ -8,8 +6,7 @@ class Main {
     }
   
     /** 
-    The block below creates ten sample songs. It pulls this from the Song.java class. The song name and the artist name are strings in quotation marks
-    whilst the playcount is just an integer (Not a double since when the playcount prints later on in the code, it will show up as a decimal number which makes no sense!)
+    The block below creates ten sample songs. See line 21 of Song.java for the constructor itself. Strings for the song name and artist name and an integer for the number of plays
     */
     public static void createSongs()
     {   
@@ -24,62 +21,80 @@ class Main {
       Song song9 = new Song("I'm Your Treasure Box","Houshou Marine",14);
       Song song10 = new Song("The Rumbling","SiM",55);
 
+      //This creates the playlist and adds the ten sample songs specified in the beginning as well as the one the user has just entered.
+      //This is being added beforehand so I won't have to add it again for both options in the menu
+
+      Playlist myPlaylist = new Playlist();
+      myPlaylist.addSong(song1);
+      myPlaylist.addSong(song2);
+      myPlaylist.addSong(song3);
+      myPlaylist.addSong(song4);
+      myPlaylist.addSong(song5);
+      myPlaylist.addSong(song6);
+      myPlaylist.addSong(song7);
+      myPlaylist.addSong(song8);
+      myPlaylist.addSong(song9);
+      myPlaylist.addSong(song10);
+
           
       /**
-      This is the first output that is displayed to the user. As the user will need to input data, a scanner is opened.
-      Scanner is called menu since this block is the menu. The input itself is set as 'int' rather than a string.
+      First thing that will show up for the user. All inputs utilise the scanner in InputReader which was built by Michael Kölling and David J. Barnes
       */
     
-      int menu = InputReader.getInt("Welcome to the Java music browser" + 
+  
+      String menu = InputReader.getString("Welcome to the Java music browser" + 
       "\n============================= " + 
       "\nPlease press the following numbers for the following options" +
-      "\n[1] to add a to the playlist" +
-      "\n[2] to remove a song from the playlist" +
+      "\n[1] to add a track to the playlist" +
+      "\n[2] to remove a track from the playlist" +
+      "\n[3] to view some of your most played tracks" +
       "\nPress any other key to exit the program" +
       "\n=============================");
-
+       
         /**
-        First if statement
-        Rather than creating a new scanner, this utilises the InputReader class that was created by Michael Kölling and David J. Barnes
-        Scanners can only accept one type of data at a time. For example if I was to try and enter a string into the menu scanner, it wouldn't work as its expecting a number
-        I need both strings and integers to create a song object as specified by the Song class and having to create three scanners for just one object would make the code look messy
-        InputReader will let users input all of these values without having to create multiple scanners in the Main class to do so.
-         */
-        if(menu == 1);
-          String nameOfSong = InputReader.getString("Please enter Song Title: ");
-          String theArtist = InputReader.getString("Please enter Artist: ");
-          int plyCount = InputReader.getInt("Please enter Playcount: ");  
-          Song song11 = new Song(nameOfSong,theArtist,plyCount);
-          song1.printSong();
-          song2.printSong();
-          song3.printSong();
-          song4.printSong();
-          song5.printSong();
-          song6.printSong();
-          song7.printSong();
-          song8.printSong();
-          song9.printSong();
-          song10.printSong();
-          song11.printSong();
+        First if statement. Uses InputReader again.
+        One of the advantages of InputReader is that it allows me to use both strings and integers within the same block.
+        Whereas if I didn't have the InputReader class, I would have to make three different scanners to add one song to the playlist 
+        This would've made the code a bit longer and messier!
+        */
+      if(menu.equals("1"));
         
-          //This creates the playlist and adds the ten sample songs specified in the beginning as well as the one the user has just entered.
-          Playlist myPlaylist = new Playlist();
-          myPlaylist.addSong(song1);
-          myPlaylist.addSong(song2);
-          myPlaylist.addSong(song3);
-  
-          //Display size of Playlist
-          System.out.println(myPlaylist.sizeOfPlaylist());
-  
-          myPlaylist.printHeader();
-          myPlaylist.printAllSongs();
+        String nameOfSong = InputReader.getString("Please enter Song Title: ");
+        String theArtist = InputReader.getString("Please enter Artist: ");
+        int plyCount = InputReader.getInt("Please enter Playcount: ");  
+        Song song11 = new Song(nameOfSong,theArtist,plyCount);
+        myPlaylist.addSong(song11);
+        System.out.println("you have" +myPlaylist.sizeOfPlaylist() +" tracks in your playlist");
+        myPlaylist.printHeader();
+        myPlaylist.printAllSongs();
+        
+    
+        
+      if(menu.equals("2"));
+        
+        myPlaylist.printHeader();
+        myPlaylist.printAllSongs();
+        int deletion = InputReader.getInt("Please select which track to remove from your list");
+        myPlaylist.deleteSong(deletion);
+        myPlaylist.printHeader();
+        myPlaylist.printAllSongs();
+        System.out.println("Song successfully deleted!");
+        
+        
+        
+      if (menu.equals("3"));
+        
+        int UpC = InputReader.getInt("Please enter a number and we can check what songs have been played by that amount or higher!");
+        myPlaylist.printHeader();
+        myPlaylist.printSelectSongs(UpC);
+        
+      if (menu.equals("4"));
+        System.out.println("Exiting program, have a good day.");
       
-          myPlaylist.deleteSong(1);
-          myPlaylist.printAllSongs();
-          System.out.println("=============================");
-          myPlaylist.printSelectSongs(6);
 
-        if (menu == 2);
+
+        
+    
 
     }
   }  
